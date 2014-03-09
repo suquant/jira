@@ -16,8 +16,8 @@ apt-get -y install libpq-dev oracle-java7-installer
 echo "cookbook 'jira', git: 'https://github.com/proppen/jira'" >> /Berksfile ; /opt/chef/embedded/bin/berks install --path /etc/chef/cookbooks/
 
 # Here we make any changes to postgresql for Jira, see cookbook documentation for examples.
-sed -i "s%md5sumhash%$(echo -n 'dbpassword' | openssl md5 | sed -e 's/.* /md5/')%g" /etc/chef/node.json
-/etc/init.d/postgresql start ; chef-solo ; /etc/init.d/postgresql stop
+#sed -i "s%md5sumhash%$(echo -n 'dbpassword' | openssl md5 | sed -e 's/.* /md5/')%g" /etc/chef/node.json
+#/etc/init.d/postgresql start ; chef-solo ; /etc/init.d/postgresql stop
 
 ## Now Install Atlassian Jira
 sh /opt/atlassian-$AppName-$AppVer-$Arch.bin -q -varfile /opt/response.varfile
